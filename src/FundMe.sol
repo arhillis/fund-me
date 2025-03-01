@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 // 1. Pragma
-pragma solidity 0.8.28;
+pragma solidity ^0.8.18;
 // 2. Imports
 
 import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
@@ -45,8 +45,9 @@ contract FundMe {
     //// private
     //// view / pure
 
-    constructor() {
+    constructor(address priceFeedAddress) {
         i_owner = msg.sender;
+        s_priceFeed = AggregatorV3Interface(priceFeedAddress);
     }
 
     /// @notice Funds our contract based on the ETH/USD price
@@ -109,5 +110,9 @@ contract FundMe {
 
     function getPriceFeed() public view returns (AggregatorV3Interface) {
         return s_priceFeed;
+    }
+
+    function getPriceFeedAddress() public view returns (address) {
+        return address(s_priceFeed);
     }
 }
