@@ -10,7 +10,7 @@ contract FundMeTest is Test {
 
     function setUp() external{
         DeployFundMe deployFundMe = new DeployFundMe();
-        fundMe = deployFundMe.run(0x694AA1769357215DE4FAC081bf1f309aDC325306);
+        fundMe = deployFundMe.run();
     }
 
     function testMinUSD() public view{
