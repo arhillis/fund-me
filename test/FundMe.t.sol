@@ -22,7 +22,11 @@ contract FundMeTest is Test {
     }
 
     function testVersion() public view{
-        assertEq(fundMe.getVersion(), 4);
+        uint256 correctVersion = 4;
+        if(block.chainid == 1){
+            correctVersion = 6;
+        }
+        assertEq(fundMe.getVersion(), correctVersion);
     }
 
 }
