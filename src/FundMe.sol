@@ -10,6 +10,7 @@ error NotOwner();
 contract FundMe {
     using PriceConverter for uint256;
 
+    //State variables
     mapping(address => uint256) private s_addressToAmountFunded;
     address[] public s_funders;
     AggregatorV3Interface private s_priceFeed;
@@ -42,7 +43,8 @@ contract FundMe {
     }
 
     function withdraw() public onlyOwner {
-        for (uint256 funderIndex = 0; funderIndex < s_funders.length; funderIndex++) {
+        uint256 numFunders = s_funders.length;
+        for (uint256 funderIndex = 0; funderIndex < numFunders; funderIndex++) {
             address funder = s_funders[funderIndex];
             s_addressToAmountFunded[funder] = 0;
         }
