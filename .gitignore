@@ -13,3 +13,11 @@ docs/
 
 # Dotenv file
 .env
+
+broadcast/
+lib/
+
+Makefile
+
+.DS_Store
+zkout/
